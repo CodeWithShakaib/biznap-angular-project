@@ -1,0 +1,70 @@
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import "./theme-variables.scss";
+
+.my-sidebar-class {
+  background-color: hsl(199, 19%, 16%);
+  // background-color: #ec524b !important;
+  background-color: #232534 !important;
+  // min-height: calc(100vh - 64px);
+  width: 240px !important;
+  margin-top: 60px;
+  .mat-divider {
+    border-top-width: 0px;
+  }
+  .active {
+    background: rgba(243, 243, 243, 0.05);
+    color: rgb(255, 255, 255) !important;
+    // border-left: 2px solid #ec524b;
+    border-left: 2px solid #232534;
+  }
+  .amml-icon {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: none !important;
+    border-radius: 0px !important;
+  }
+  .active-amml-item {
+    .amml-icon-fa {
+      .fa-circle {
+        font-size: 10px;
+        background-color: #fff;
+        color: #fff;
+        border-radius: 50px;
+      }
+    }
+  }
+  .amml-icon-fa {
+    .fa-circle {
+      font-size: 10px;
+    }
+  }
+  .mat-list-item {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .level-2 {
+    .amml-item {
+      line-height: 30px;
+      height: 30px;
+    }
+    .anml-data {
+      height: 30px;
+      padding-left: 20px;
+      font-size: 13px;
+      .amml-icon,
+      .label {
+        line-height: 30px;
+        margin-right: 5px !important;
+      }
+
+      .mat-list-item {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+  }
+}

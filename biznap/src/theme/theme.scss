@@ -1,0 +1,80 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+
+// stylelint-disable-next-line selector-max-universal
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100%;
+}
+
+.page-layout {
+  padding: 1% 5%;
+  height: calc(100vh - 65px);
+  background-color: #f5f5f5;
+
+  .heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #454545;
+  }
+
+  .btn-image-upload {
+    padding: 6px 25px;
+    background: transparent;
+    border: 2px solid #6b6d7b;
+    border-radius: 15px;
+    text-align: center;
+    color: #6b6d7b;
+    font-weight: 500;
+    outline: none;
+    font-size: 1.1em;
+
+    mat-icon {
+      position: relative;
+      top: 7px;
+    }
+  }
+}
+
+.btn {
+  outline: none !important;
+  box-shadow: none !important;
+  &.custom-btn-primary {
+    border-radius: 30px;
+    padding: 6px 30px;
+    font-size: 16px;
+    color: #fff;
+    // background-color: #ec524b;
+    background-color: #6b6d7b !important;
+    // border-color: #ec524b;
+    border-color: #6b6d7b !important;
+
+    &:hover,
+    &:visited,
+    &:focus,
+    &:active &:focus-within {
+      // background-color: darken(#6b6d7b, 10%);
+      background-color: transparent !important;
+      border-color: #6b6d7b;
+      color: #454545;
+    }
+  }
+
+  &.btn-default-outlined {
+    border-radius: 30px;
+    padding: 6px 30px;
+    font-size: 16px;
+    border-color: #6c757d;
+    color: #6c757d;
+    background-color: transparent;
+  }
+}

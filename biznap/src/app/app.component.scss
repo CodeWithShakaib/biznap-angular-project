@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex: 1;
+
+  notifier-container {
+    overflow-x: hidden;
+    background: transparent;
+    position: absolute;
+    // z-index: -1;
+  }
+}

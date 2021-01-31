@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex: 1;
+
+  .update-adform {
+    width: 100%;
+
+    .full-width-field {
+      width: 100%;
+    }
+
+    input[type="time"] {
+      background: transparent;
+      border: 1px solid #e2e2e2;
+      padding: 18px 2px;
+    }
+  }
+}

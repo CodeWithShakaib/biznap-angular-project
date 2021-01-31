@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex: 1;
+
+  .add-fieldworkerform {
+    width: 100%;
+
+    .full-width-field {
+      width: 100%;
+    }
+
+    .user-image img {
+      width: 40%;
+      height: 15vh;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+  }
+}

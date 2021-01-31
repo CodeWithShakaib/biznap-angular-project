@@ -1,0 +1,93 @@
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import "./theme/theme-variables";
+
+// 3rd party libraries
+@import "~material-design-icons-iconfont/src/material-design-icons";
+@import "~angular-notifier/styles";
+
+// Angular Material custom theme
+// The mixins below must be included once so we separated them from the variables
+@import "~@angular/material/theming";
+@import "../node_modules/angular-notifier/styles.scss";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);
+
+// Theme customization
+@import "theme/theme";
+
+@import "theme/sidebar.scss";
+
+.bg-theme {
+  // background-color: #ec524b;
+  background-color: #232534 !important;
+}
+.mt-45 {
+  margin-top: 45px;
+}
+
+.center-content {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.uploaded-image {
+  width: 40%;
+  height: 15vh;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 3px solid #d2d2d2;
+}
+
+.mat-slide-toggle.mat-checked {
+  .mat-slide-toggle-bar {
+    // background-color:#ec524b !important;
+    background-color: #232534 !important;
+  }
+}
+
+.mat-slide-toggle.mat-checked {
+  .mat-slide-toggle-thumb {
+    background-color: #fff !important;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6f6f6f;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6f6f6f;
+}

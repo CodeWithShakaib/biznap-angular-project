@@ -1,0 +1,67 @@
+<div class="w-100">
+  <div class="page-layout">
+    <!-- <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input autocomplete="off">
+          </mat-form-field> -->
+
+    <div class="text-right mt-2">
+      <button class="btn custom-btn-primary" [routerLink]="['/add-category']">Add New Category</button>
+    </div>
+
+    <div *ngIf="isLoading" class="w-100 h-100">
+      <div class="loader" fxLayout="row" fxLayoutAlign="center center">
+        <app-loader size="2" [isLoading]="true"></app-loader>
+      </div>
+    </div>
+
+    <table *ngIf="!isLoading" mat-table [dataSource]="listData" class="mat-elevation-z8 mt-4">
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef>Category icon.</th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          <img
+            *ngIf="element?.icon"
+            class="category-image"
+            src="{{ baseUrl }}{{ element?.icon }}"
+            alt="Category Icon"
+          />
+          <img *ngIf="!element?.icon" class="category-image" src="/assets/images/noimage.png" alt="" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element?.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [routerLink]="['/edit-category/', element.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteCategory(element.id)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="4"> Loading data.... </mat-footer-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data</td>
+      </tr>
+    </table>
+  </div>
+</div>

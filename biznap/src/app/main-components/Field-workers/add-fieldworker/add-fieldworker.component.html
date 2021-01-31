@@ -1,0 +1,115 @@
+<div class="w-100">
+  <div class="page-layout">
+    <div class="mt-5">
+      <form
+        class="add-fieldworkerform"
+        fxLayout="column"
+        [formGroup]="addFieldworkerForm"
+        (ngSubmit)="addFieldworker()"
+      >
+        <!-- row 1 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>First name</mat-label>
+              <input matInput type="text" placeholder="firstname" formControlName="f_name" autocomplete="off" />
+              <mat-error
+                *ngIf="addFieldworkerForm.controls.f_name.invalid || addFieldworkerForm.controls.f_name.touched"
+              >
+                <span *ngIf="addFieldworkerForm.controls.f_name.errors?.required"> First name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input matInput type="text" placeholder="lastname" formControlName="l_name" autocomplete="off" />
+              <mat-error
+                *ngIf="addFieldworkerForm.controls.l_name.invalid || addFieldworkerForm.controls.l_name.touched"
+              >
+                <span *ngIf="addFieldworkerForm.controls.l_name.errors?.required"> Last name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 2  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>CNIC</mat-label>
+              <input matInput type="text" placeholder="cnic" formControlName="cnic" autocomplete="off" />
+              <mat-error *ngIf="addFieldworkerForm.controls.cnic.invalid || addFieldworkerForm.controls.cnic.touched">
+                <span *ngIf="addFieldworkerForm.controls.cnic.errors?.required"> CNIC is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label> Address</mat-label>
+              <input matInput type="text" placeholder="address" formControlName="address" autocomplete="off" />
+              <mat-error
+                *ngIf="addFieldworkerForm.controls.address.invalid || addFieldworkerForm.controls.address.touched"
+              >
+                <span *ngIf="addFieldworkerForm.controls.address.errors?.required"> Address is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 3  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input matInput type="number" placeholder="phone" formControlName="phone_number" autocomplete="off" />
+              <mat-error
+                *ngIf="
+                  addFieldworkerForm.controls.phone_number.invalid || addFieldworkerForm.controls.phone_number.touched
+                "
+              >
+                <span *ngIf="addFieldworkerForm.controls.phone_number.errors?.required">
+                  Phone number is required.
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-radio-group aria-label="Select your gender" formControlName="gender">
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <!-- row 4  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50" class="pt-3">
+            <div *ngIf="!imgURL">
+              <input #fileInput type="file" #file hidden (change)="previewImage($event)" />
+              <button type="button" class="btn-image-upload" (click)="file.click()">
+                <mat-icon aria-hidden="false">add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            </div>
+
+            <div *ngIf="imgURL">
+              <img class="uploaded-image" [src]="imgURL" alt="Fieldworker Image" />
+              <img class="delete-icon" src="/assets/images/delete-icon.svg" (click)="removeImage()" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" class="btn custom-btn-primary">
+            <app-loader [hidden]="!isLoading" size="0.5" [isLoading]="isLoading"></app-loader>
+            <span [hidden]="isLoading">Add Fieldworker</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

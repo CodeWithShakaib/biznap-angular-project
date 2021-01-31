@@ -1,0 +1,93 @@
+<div class="w-100">
+  <div class="page-layout">
+    <!-- <div class="heading">
+            Add User
+        </div> -->
+
+    <div class="mt-5">
+      <form class="add-userform" fxLayout="column" [formGroup]="addUserForm" (ngSubmit)="addUser()">
+        <!-- row 1 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>First name</mat-label>
+              <input matInput type="text" placeholder="firstname" formControlName="f_name" />
+              <mat-error *ngIf="addUserForm.controls.f_name.invalid || addUserForm.controls.f_name.touched">
+                <span *ngIf="addUserForm.controls.f_name.errors?.required"> First name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input matInput type="text" placeholder="last name" formControlName="l_name" />
+              <mat-error *ngIf="addUserForm.controls.l_name.invalid || addUserForm.controls.l_name.touched">
+                <span *ngIf="addUserForm.controls.l_name.errors?.required"> Last name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 2  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="email" formControlName="email" />
+              <mat-error *ngIf="addUserForm.controls.email.invalid || addUserForm.controls.email.touched">
+                <span *ngIf="addUserForm.controls.email.errors?.required"> Email is required. </span>
+                <span *ngIf="addUserForm.controls.email.errors?.pattern"> Please enter a valid email address. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="password" formControlName="password" />
+              <mat-error *ngIf="addUserForm.controls.password.invalid || addUserForm.controls.password.touched">
+                <span *ngIf="addUserForm.controls.password.errors?.required"> Password is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 3  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="text" placeholder="+923430531070" formControlName="phone_number" />
+              <mat-error *ngIf="addUserForm.controls.phone_number.invalid || addUserForm.controls.phone_number.touched">
+                <span *ngIf="addUserForm.controls.phone_number.errors?.required"> Phone number is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" class="pt-3">
+            <div *ngIf="!imgURL">
+              <input #fileInput type="file" #file hidden (change)="previewImage($event)" />
+              <button type="button" class="btn-image-upload" (click)="file.click()">
+                <mat-icon aria-hidden="false">add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            </div>
+
+            <div *ngIf="imgURL">
+              <img class="uploaded-image" [src]="imgURL" alt="User Image" />
+              <img class="delete-icon" src="/assets/images/delete-icon.svg" (click)="removeImage()" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" class="btn custom-btn-primary">
+            <app-loader [hidden]="!isLoading" size="0.5" [isLoading]="isLoading"></app-loader>
+            <span [hidden]="isLoading">Add User</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+
+  .add-userform {
+    width: 100%;
+
+    .full-width-field {
+      width: 100%;
+    }
+  }
+}

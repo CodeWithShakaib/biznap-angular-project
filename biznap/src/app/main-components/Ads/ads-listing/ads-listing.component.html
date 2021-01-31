@@ -1,0 +1,76 @@
+<div class="w-100">
+  <div class="page-layout">
+    <!-- <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input autocomplete="off">
+          </mat-form-field> -->
+
+    <div class="text-right mt-2">
+      <button class="btn custom-btn-primary" [routerLink]="['/add-ad']">Add New Ad</button>
+    </div>
+
+    <div *ngIf="isLoading" class="w-100 h-100">
+      <div class="loader" fxLayout="row" fxLayoutAlign="center center">
+        <app-loader size="2" [isLoading]="true"></app-loader>
+      </div>
+    </div>
+
+    <table *ngIf="!isLoading" mat-table [dataSource]="listData" class="mat-elevation-z8 mt-4">
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Image.</th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          <img *ngIf="element?.img_url" class="ad-image" src="{{ baseUrl }}{{ element.img_url }}" alt="Ad Icon" />
+          <img *ngIf="!element?.img_url" class="ad-image" src="/assets/images/noimage.png" alt="" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element?.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="start_at">
+        <th mat-header-cell *matHeaderCellDef>Start at</th>
+        <td mat-cell *matCellDef="let element">{{ element?.start_at | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="end_at">
+        <th mat-header-cell *matHeaderCellDef>End at</th>
+        <td mat-cell *matCellDef="let element">{{ element?.end_at | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-slide-toggle [checked]="element?.verification_status" (click)="toggle_status(element?.id)">
+            {{ element?.status }}
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [routerLink]="['/edit-ad', element.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteAd(element.id)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loading">
+        <mat-footer-cell *matFooterCellDef colspan="4"> Loading data.... </mat-footer-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data</td>
+      </tr>
+    </table>
+  </div>
+</div>

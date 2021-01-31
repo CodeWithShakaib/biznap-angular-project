@@ -1,0 +1,58 @@
+<div class="w-100">
+  <div class="page-layout">
+    <div class="mt-5">
+      <form class="add-categoryform" fxLayout="column" [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+        <!-- row 1 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Category Name</mat-label>
+              <input matInput type="text" placeholder="firstname" formControlName="name" autocomplete="off" />
+              <mat-error *ngIf="addCategoryForm.controls.name.invalid || addCategoryForm.controls.name.touched">
+                <span *ngIf="addCategoryForm.controls.name.errors?.required"> Category name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label> Description</mat-label>
+              <input matInput type="text" placeholder="last name" formControlName="description" autocomplete="off" />
+              <mat-error
+                *ngIf="addCategoryForm.controls.description.invalid || addCategoryForm.controls.description.touched"
+              >
+                <span *ngIf="addCategoryForm.controls.description.errors?.required"> Description is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 2  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50" class="pt-3">
+            <div *ngIf="!imgURL">
+              <input #fileInput type="file" #file hidden (change)="previewImage($event)" />
+              <button type="button" class="btn-image-upload" (click)="file.click()">
+                <mat-icon aria-hidden="false">add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            </div>
+
+            <div *ngIf="imgURL">
+              <img class="uploaded-image" [src]="imgURL" alt="Categoy Image" />
+              <img class="delete-icon" src="/assets/images/delete-icon.svg" (click)="removeImage()" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- row 3  -->
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" class="btn custom-btn-primary">
+            <app-loader [hidden]="!isLoading" size="0.5" [isLoading]="isLoading"></app-loader>
+            <span [hidden]="isLoading">Add Category</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

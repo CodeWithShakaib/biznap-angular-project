@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex: 1;
+
+  .custom-mat-card {
+    width: 270px;
+
+    .users-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      display: inline;
+    }
+
+    .description {
+      font-size: 1.2em;
+      font-weight: 700;
+    }
+  }
+
+  // ::ng-deep .legend-items {
+  //     display: none
+  // }
+
+  // ::ng-deep .item-percent {
+  //     display: none
+  // }
+
+  // ::ng-deep .item-value {
+  //     display: none;
+  // }
+}

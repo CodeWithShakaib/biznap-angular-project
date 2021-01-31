@@ -1,0 +1,25 @@
+:host {
+  .feedback-img {
+    width: 48px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #f8c52b;
+  }
+  .filledPurple {
+    color: #8261de;
+  }
+  .bad {
+    color: #f8c52b;
+  }
+  .filled.bad {
+    color: #f8c52b;
+  }
+}

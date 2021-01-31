@@ -1,0 +1,57 @@
+<div class="w-100">
+  <div class="page-layout">
+    <div *ngIf="isLoading" class="w-100 h-100">
+      <div class="loader" fxLayout="row" fxLayoutAlign="center center">
+        <app-loader size="2" [isLoading]="true"></app-loader>
+      </div>
+    </div>
+
+    <div *ngIf="!isLoading" class="w-100 h-100 mt-4">
+      <div *ngFor="let item of allFeedbacks" class="mt-2">
+        <mat-card class="feedback-card" *ngIf="item.shop != null">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+              <!-- <img *ngIf="!item.shop.img_url || !item.user.img_url" class="feedback-img" src="/assets/images/noimage.png" alt="" /> -->
+              <img *ngIf="item.shop.img_url" class="feedback-img" src="{{ baseUrl }}{{ item.shop.img_url }}" alt="" />
+            </div>
+            <mat-card-title>{{ item.shop.name }}</mat-card-title>
+            <mat-card-subtitle>{{ item?.createdAt | date }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{ item?.body }}
+            </p>
+
+            <ngb-rating [rate]="item?.rating">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="feedback-card" *ngIf="item.user != null">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+              <!-- <img *ngIf="!item.shop.img_url || !item.user.img_url" class="feedback-img" src="/assets/images/noimage.png" alt="" /> -->
+              <img *ngIf="item.user.img_url" class="feedback-img" src="{{ baseUrl }}{{ item.user.img_url }}" alt="" />
+            </div>
+            <mat-card-title>{{ item.user.f_name + ' ' + item.user.l_name }}</mat-card-title>
+            <mat-card-subtitle>{{ item?.createdAt | date }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{ item?.body }}
+            </p>
+
+            <ngb-rating [rate]="item?.rating">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

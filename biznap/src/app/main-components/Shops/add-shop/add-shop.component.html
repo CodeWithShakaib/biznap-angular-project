@@ -1,0 +1,232 @@
+<div class="w-100">
+  <div class="page-layout">
+    <!-- <div class="heading">
+            Add User
+        </div> -->
+
+    <div class="mt-5">
+      <form class="add-shopform" fxLayout="column" [formGroup]="addShopForm" (ngSubmit)="addShop()">
+        <!-- row 1 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Shop name</mat-label>
+              <input matInput type="text" placeholder="Shop name" formControlName="name" autocomplete="off" />
+              <mat-error *ngIf="addShopForm.controls.name.invalid || addShopForm.controls.name.touched">
+                <span *ngIf="addShopForm.controls.name.errors?.required"> Shop name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput type="text" placeholder="Address" formControlName="address" autocomplete="off" />
+              <mat-error *ngIf="addShopForm.controls.address.invalid || addShopForm.controls.address.touched">
+                <span *ngIf="addShopForm.controls.address.errors?.required"> Address is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 2 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction ID</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="transacation id"
+                formControlName="transaction_id"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="addShopForm.controls.transaction_id.invalid || addShopForm.controls.transaction_id.touched"
+              >
+                <span *ngIf="addShopForm.controls.transaction_id.errors?.required"> Transaction id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction Amount</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="transaction amount"
+                formControlName="transaction_amount"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="
+                  addShopForm.controls.transaction_amount.invalid || addShopForm.controls.transaction_amount.touched
+                "
+              >
+                <span *ngIf="addShopForm.controls.transaction_amount.errors?.required">
+                  Transaction amount is required.
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 3  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction method</mat-label>
+              <input matInput type="text" placeholder="transaction method" formControlName="transaction_method" />
+              <mat-error
+                *ngIf="
+                  addShopForm.controls.transaction_method.invalid || addShopForm.controls.transaction_method.touched
+                "
+              >
+                <span *ngIf="addShopForm.controls.transaction_method.errors?.required">
+                  Transaction method is required.
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Owner name</mat-label>
+              <input matInput type="text" placeholder="owner name" formControlName="owner_name" autocomplete="off" />
+              <mat-error *ngIf="addShopForm.controls.owner_name.invalid || addShopForm.controls.owner_name.touched">
+                <span *ngIf="addShopForm.controls.owner_name.errors?.required"> Owner name is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 4  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Category ID</mat-label>
+              <mat-select formControlName="category_id">
+                <!-- <mat-option>None</mat-option> -->
+                <mat-option *ngFor="let item of shopCategories" [value]="item.id">{{ item.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="addShopForm.controls.category_id.invalid || addShopForm.controls.category_id.touched">
+                <span *ngIf="addShopForm.controls.category_id.errors?.required"> Category is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Fieldworker ID</mat-label>
+              <mat-select formControlName="fieldWorker_id">
+                <mat-option *ngFor="let item of allFieldworkers" [value]="item.id">{{ item.name }}</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="addShopForm.controls.fieldWorker_id.invalid || addShopForm.controls.fieldWorker_id.touched"
+              >
+                <span *ngIf="addShopForm.controls.fieldWorker_id.errors?.required"> Fieldworker Id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Field worker ID</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="field worker id"
+                formControlName="fieldWorker_id"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="addShopForm.controls.fieldWorker_id.invalid || addShopForm.controls.fieldWorker_id.touched"
+              >
+                <span *ngIf="addShopForm.controls.fieldWorker_id.errors?.required"> Fieldworker id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div> -->
+        </div>
+
+        <!-- row 5  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <label for="appt">Select opening Time</label>
+            <input type="time" id="appt" formControlName="opening_time" class="full-width-field" />
+          </div>
+
+          <div fxFlex="50">
+            <label for="appt">Select closing Time</label>
+            <input type="time" id="appt" formControlName="closing_time" class="full-width-field" />
+          </div>
+        </div>
+
+        <!-- row 6  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px" class="mt-4">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="email" formControlName="email" autocomplete="off" />
+              <mat-error *ngIf="addShopForm.controls.email.invalid || addShopForm.controls.email.touched">
+                <span *ngIf="addShopForm.controls.email.errors?.required"> Email is required. </span>
+                <span *ngIf="addShopForm.controls.email.errors?.pattern"> Please enter a valid email address. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="password" formControlName="password" />
+              <mat-error *ngIf="addShopForm.controls.password.invalid || addShopForm.controls.password.touched">
+                <span *ngIf="addShopForm.controls.password.errors?.required"> Password is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 5  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="+923430231198"
+                formControlName="phone_number"
+                autocomplete="off"
+              />
+              <mat-error *ngIf="addShopForm.controls.phone_number.invalid || addShopForm.controls.phone_number.touched">
+                <span *ngIf="addShopForm.controls.phone_number.errors?.required"> Phone number is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" class="pt-3">
+            <div *ngIf="!imgURL">
+              <input #fileInput type="file" #file hidden (change)="previewImage($event)" />
+              <button type="button" class="btn-image-upload" (click)="file.click()">
+                <mat-icon aria-hidden="false">add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            </div>
+
+            <div *ngIf="imgURL">
+              <img class="uploaded-image" [src]="imgURL" alt="Shop Image" />
+              <img class="delete-icon" src="/assets/images/delete-icon.svg" (click)="removeImage()" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" class="btn custom-btn-primary">
+            <app-loader [hidden]="!isLoading" size="0.5" [isLoading]="isLoading"></app-loader>
+            <span [hidden]="isLoading">Add Shop</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

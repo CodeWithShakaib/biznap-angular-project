@@ -1,0 +1,183 @@
+<div class="w-100">
+  <div *ngIf="isLoading" class="mt-5 h-100">
+    <div class="loader" fxLayout="row" fxLayoutAlign="center center" class="w-100 h-100">
+      <app-loader size="2" [isLoading]="true"></app-loader>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="page-layout">
+    <div class="mt-5">
+      <form class="update-adform" fxLayout="column" [formGroup]="updateAdForm" (ngSubmit)="updateAd()">
+        <!-- row 1 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput type="text" placeholder="Title" formControlName="title" autocomplete="off" />
+              <mat-error *ngIf="updateAdForm.controls.title.invalid || updateAdForm.controls.title.touched">
+                <span *ngIf="updateAdForm.controls.title.errors?.required"> Title is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Category ID</mat-label>
+              <mat-select formControlName="category_id">
+                <mat-option *ngFor="let item of shopCategories" [value]="item.id">{{ item.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="updateAdForm.controls.category_id.invalid || updateAdForm.controls.category_id.touched">
+                <span *ngIf="updateAdForm.controls.category_id.errors?.required"> Category is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 2  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label translate>Start at</mat-label>
+              <input matInput [matDatepicker]="picker" autocomplete="off" formControlName="start_at" />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+
+              <mat-error *ngIf="updateAdForm.controls.start_at.invalid && updateAdForm.controls.start_at.touched">
+                <span *ngIf="updateAdForm.controls.start_at.errors?.required"> Start date is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label translate>End at</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker2"
+                autocomplete="off"
+                [min]="updateAdForm.value.start_at"
+                formControlName="end_at"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker2">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+
+              <mat-error *ngIf="updateAdForm.controls.end_at.invalid && updateAdForm.controls.end_at.touched">
+                <span *ngIf="updateAdForm.controls.end_at.errors?.required"> End date is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 3 -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction ID</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="transacation id"
+                formControlName="transaction_id"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="updateAdForm.controls.transaction_id.invalid || updateAdForm.controls.transaction_id.touched"
+              >
+                <span *ngIf="updateAdForm.controls.transaction_id.errors?.required"> Transaction id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction Amount</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder="transaction amount"
+                formControlName="transaction_amount"
+                autocomplete="off"
+              />
+              <mat-error
+                *ngIf="
+                  updateAdForm.controls.transaction_amount.invalid || updateAdForm.controls.transaction_amount.touched
+                "
+              >
+                <span *ngIf="updateAdForm.controls.transaction_amount.errors?.required">
+                  Transaction amount is required.
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 4  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="30px">
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Transaction method</mat-label>
+              <input matInput type="text" placeholder="transaction method" formControlName="transaction_method" />
+              <mat-error
+                *ngIf="
+                  updateAdForm.controls.transaction_method.invalid || updateAdForm.controls.transaction_method.touched
+                "
+              >
+                <span *ngIf="updateAdForm.controls.transaction_method.errors?.required">
+                  Transaction method is required.
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Shop Id</mat-label>
+              <input matInput type="text" placeholder="Shop Id" formControlName="shop_id" autocomplete="off" />
+              <mat-error *ngIf="updateAdForm.controls.shop_id.invalid || updateAdForm.controls.shop_id.touched">
+                <span *ngIf="updateAdForm.controls.shop_id.errors?.required"> Shop id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div> -->
+
+          <div fxFlex="50">
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Shop ID</mat-label>
+              <mat-select formControlName="shop_id">
+                <mat-option *ngFor="let item of shopDropdown" [value]="item.id">{{ item.name }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="updateAdForm.controls.shop_id.invalid || updateAdForm.controls.shop_id.touched">
+                <span *ngIf="updateAdForm.controls.shop_id.errors?.required"> Shop Id is required. </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- row 5  -->
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+          <div fxFlex="50" class="pt-3">
+            <div *ngIf="!imgURL">
+              <input #fileInput type="file" #file hidden (change)="previewImage($event)" />
+              <button type="button" class="btn-image-upload" (click)="file.click()">
+                <mat-icon aria-hidden="false">add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            </div>
+
+            <div *ngIf="imgURL">
+              <img class="uploaded-image" [src]="imgURL" alt="Shop Image" />
+              <img class="delete-icon" src="/assets/images/delete-icon.svg" (click)="removeImage()" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" class="btn custom-btn-primary">Update Ad</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

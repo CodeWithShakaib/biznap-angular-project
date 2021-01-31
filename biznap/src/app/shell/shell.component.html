@@ -1,0 +1,56 @@
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav
+      #sidenav
+      [mode]="isMobile ? 'over' : 'side'"
+      [opened]="!isMobile"
+      [disableClose]="!isMobile"
+      ngClass.gt-sm="has-border"
+    >
+      <mat-toolbar class="bg-theme text-white">
+        <span translate>APP_NAME</span>
+        <div fxFlex></div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="userMenu">
+            <mat-icon>person</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu">
+            <!-- <mat-list>
+              <mat-list-item>
+                <span translate class="text-dark">Logged in as</span>&nbsp;<b class="text-dark">{{ username }}</b>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list> -->
+            <button class="outline-none" mat-menu-item (click)="logout()" translate>Logout</button>
+          </mat-menu>
+        </div>
+        <!-- <app-language-selector icon="true"></app-language-selector> -->
+      </mat-toolbar>
+
+      <div class="mt-45"></div>
+
+      <mat-toolbar class="sidebar-color center-content">
+        <img class="logo" src="../../assets/images/logowithname.png" alt="" />
+      </mat-toolbar>
+
+      <nav class="mt-5 nav-top pl-3 pr-3">
+        <mat-list class="text-center">
+          <div *ngFor="let item of appitems" class="list">
+            <a style="color: #353434" mat-list-item routerLink="{{ item?.link }}" routerLinkActive="active-link">
+              <span translate class="text">{{ item?.label }} </span>
+            </a>
+          </div>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar class="mat-elevation-z6 bg-theme">
+        <button class="menu-button text-white" mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="text-white">{{ title }}</span>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
