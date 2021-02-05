@@ -40,23 +40,23 @@ export class ShellComponent implements OnInit {
       {
         label: 'Dashboard',
         link: '/dashboard',
-        icon: 'dash',
+        icon: 'home',
       },
       {
         label: 'Users',
         link: '/users',
-        icon: 'person',
+        icon: 'account_circle',
       },
       {
         label: 'Field Workers',
         link: '/fieldworkers',
-        icon: 'groups',
+        icon: 'people_alt',
         // hidden: true
       },
       {
         label: 'Shops',
         link: '/shops',
-        icon: 'shopping_basket',
+        icon: 'shopping_cart',
       },
       {
         label: 'Ads',
@@ -66,17 +66,17 @@ export class ShellComponent implements OnInit {
       {
         label: 'Categories',
         link: '/categories',
-        icon: 'view_module',
+        icon: 'category',
       },
       {
         label: 'Cities',
         link: '/cities',
-        icon: 'cities',
+        icon: 'location_city',
       },
       {
         label: 'Feedbacks',
         link: '/feedbacks',
-        icon: 'feedbacks',
+        icon: 'feedback',
       },
     ];
   }

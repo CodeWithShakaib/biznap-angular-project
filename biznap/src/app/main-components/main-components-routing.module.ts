@@ -32,7 +32,7 @@ import { AllFeedbacksComponent } from './Feedbacks/all-feedbacks/all-feedbacks.c
 
 const routes: Routes = [
   Shell.childRoutes([
-    // { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
     { path: 'dashboard', component: DashboardComponent, data: { title: marker('Dashboard') } },
 

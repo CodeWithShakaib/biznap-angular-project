@@ -120,6 +120,7 @@ export class EditAdsComponent implements OnInit {
 
     this.isLoading = true;
     let data = {
+      id: this.adId,
       title: this.updateAdForm.value.title,
       type: 'PENDING',
       views_count: 0,

@@ -24543,17 +24543,26 @@
             a.Nc(1, '\n            '),
             a.Ub(2, 'a', 19),
             a.Nc(3, '\n              '),
-            a.Ub(4, 'span', 20),
+            a.Ub(4, 'mat-icon'),
             a.Nc(5),
             a.Tb(),
-            a.Nc(6, '\n            '),
+            a.Nc(6, ' '),
+            a.Ub(7, 'span', 20),
+            a.Nc(8),
             a.Tb(),
-            a.Nc(7, '\n          '),
+            a.Nc(9, '\n            '),
+            a.Tb(),
+            a.Nc(10, '\n          '),
             a.Tb()),
           2 & t)
         ) {
           const t = e.$implicit;
-          a.Bb(2), a.rc('routerLink', null == t ? null : t.link), a.Bb(3), a.Pc('', null == t ? null : t.label, ' ');
+          a.Bb(2),
+            a.rc('routerLink', null == t ? null : t.link),
+            a.Bb(3),
+            a.Oc(null == t ? null : t.icon),
+            a.Bb(3),
+            a.Pc('', null == t ? null : t.label, ' ');
         }
       }
       let be = (() => {
@@ -24580,14 +24589,14 @@
           }
           ngOnInit() {
             this.appitems = [
-              { label: 'Dashboard', link: '/dashboard', icon: 'dash' },
-              { label: 'Users', link: '/users', icon: 'person' },
-              { label: 'Field Workers', link: '/fieldworkers', icon: 'groups' },
-              { label: 'Shops', link: '/shops', icon: 'shopping_basket' },
+              { label: 'Dashboard', link: '/dashboard', icon: 'home' },
+              { label: 'Users', link: '/users', icon: 'account_circle' },
+              { label: 'Field Workers', link: '/fieldworkers', icon: 'people_alt' },
+              { label: 'Shops', link: '/shops', icon: 'shopping_cart' },
               { label: 'Ads', link: '/ads', icon: 'play_circle_outline' },
-              { label: 'Categories', link: '/categories', icon: 'view_module' },
-              { label: 'Cities', link: '/cities', icon: 'cities' },
-              { label: 'Feedbacks', link: '/feedbacks', icon: 'feedbacks' },
+              { label: 'Categories', link: '/categories', icon: 'category' },
+              { label: 'Cities', link: '/cities', icon: 'location_city' },
+              { label: 'Feedbacks', link: '/feedbacks', icon: 'feedback' },
             ];
           }
           logout() {
@@ -24696,7 +24705,7 @@
                   a.Nc(41, '\n        '),
                   a.Ub(42, 'mat-list', 13),
                   a.Nc(43, '\n          '),
-                  a.Lc(44, ge, 8, 2, 'div', 14),
+                  a.Lc(44, ge, 11, 3, 'div', 14),
                   a.Nc(45, '\n        '),
                   a.Tb(),
                   a.Nc(46, '\n      '),
@@ -24791,7 +24800,6 @@
                 .then((t) => t.AboutModule),
           },
         ]),
-        { path: '**', redirectTo: '', pathMatch: 'full' },
       ];
       let we = (() => {
           class t {}
@@ -40516,6 +40524,7 @@
               ((this.isLoading = !0),
               this.mcService
                 .updateAd({
+                  id: this.adId,
                   title: this.updateAdForm.value.title,
                   type: 'PENDING',
                   views_count: 0,
@@ -42957,6 +42966,7 @@
       })();
       const X_ = [
         ye.childRoutes([
+          { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
           { path: 'dashboard', component: hl, data: { title: Object(_t.a)('Dashboard') } },
           { path: 'users', component: Bl, data: { title: Object(_t.a)('Users') } },
           { path: 'add-user', component: nd, data: { title: Object(_t.a)('Add User') } },

@@ -19,7 +19,7 @@
       >
         <div>
           <mat-card class="custom-mat-card">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <mat-card-title>
                 <img class="users-icon" src="/assets/images/user.png" alt="" />
                 <p class="d-inline">
@@ -30,13 +30,25 @@
 
             <mat-card-content>
               <div class="description">Total Users: {{ userData?.length }}</div>
-            </mat-card-content>
+            </mat-card-content> -->
+            <div fxLayout="row">
+              <div fxFlex="50">
+                <img class="users-icon" src="/assets/images/user.png" alt="" />
+                <div>
+                  <b>Users</b>
+                </div>
+              </div>
+
+              <div fxFlex="50" class="border-left-1 mt-4 text-center">
+                <h1>{{ userData?.length }}</h1>
+              </div>
+            </div>
           </mat-card>
         </div>
 
         <div>
           <mat-card class="custom-mat-card">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <mat-card-title>
                 <img class="users-icon" src="/assets/images/fieldworkers.png" alt="" />
                 <p class="d-inline">
@@ -47,13 +59,26 @@
 
             <mat-card-content>
               <div class="description">Total Fieldworkers: {{ fieldworkersData?.length }}</div>
-            </mat-card-content>
+            </mat-card-content> -->
+
+            <div fxLayout="row">
+              <div fxFlex="50">
+                <img class="users-icon" src="/assets/images/fieldworkers.png" alt="" />
+                <div>
+                  <b>Fieldworkers</b>
+                </div>
+              </div>
+
+              <div fxFlex="50" class="border-left-1 mt-4 text-center">
+                <h1>{{ fieldworkersData?.length }}</h1>
+              </div>
+            </div>
           </mat-card>
         </div>
 
         <div>
           <mat-card class="custom-mat-card">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <mat-card-title>
                 <img class="users-icon" src="/assets/images/shop.png" alt="" />
                 <p class="d-inline">
@@ -64,13 +89,26 @@
 
             <mat-card-content>
               <div class="description">Total Shops: {{ shopsData?.length }}</div>
-            </mat-card-content>
+            </mat-card-content> -->
+
+            <div fxLayout="row">
+              <div fxFlex="50">
+                <img class="users-icon" src="/assets/images/shop.png" alt="" />
+                <div>
+                  <b>Shops</b>
+                </div>
+              </div>
+
+              <div fxFlex="50" class="border-left-1 mt-4 text-center">
+                <h1>{{ shopsData?.length }}</h1>
+              </div>
+            </div>
           </mat-card>
         </div>
 
         <div>
           <mat-card class="custom-mat-card">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <mat-card-title>
                 <img class="users-icon" src="/assets/images/ads.png" alt="" />
                 <p class="d-inline">
@@ -81,7 +119,20 @@
 
             <mat-card-content>
               <div class="description">Total Ads: {{ adsData?.length }}</div>
-            </mat-card-content>
+            </mat-card-content> -->
+
+            <div fxLayout="row">
+              <div fxFlex="50">
+                <img class="users-icon" src="/assets/images/ads.png" alt="" />
+                <div>
+                  <b>Ads</b>
+                </div>
+              </div>
+
+              <div fxFlex="50" class="border-left-1 mt-4 text-center">
+                <h1>{{ adsData?.length }}</h1>
+              </div>
+            </div>
           </mat-card>
         </div>
       </div>
